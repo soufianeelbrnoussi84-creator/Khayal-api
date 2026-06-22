@@ -2,6 +2,7 @@ from sqlmodel import SQLModel,Field
 from typing import Optional
 from enum import Enum
 from datetime import date,datetime
+from models.product import ProductSize
 
     
 class OrderStatus(str,Enum):
@@ -21,7 +22,7 @@ class Order(SQLModel, table=True):
     address: Optional[str]= Field(default=None)
     product_id:int
     quantity: int
-    size: str
+    size: ProductSize
     total_price:float
     status: OrderStatus= Field(default=OrderStatus.pending)
     note: Optional[str]= Field(default=None)

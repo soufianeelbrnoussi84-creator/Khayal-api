@@ -2,6 +2,7 @@ from pydantic import BaseModel
 from typing import Optional
 from datetime import date, datetime
 from models.order import OrderStatus
+from models.product import ProductSize
 
 
 class OrderCreate(BaseModel):
@@ -14,7 +15,7 @@ class OrderCreate(BaseModel):
     address: str
     product_id: int
     quantity: int
-    size: str
+    size: ProductSize
     note: Optional[str]=None
     
 
@@ -32,7 +33,7 @@ class OrderResponse(BaseModel):
     address: str
     product_id: int
     quantity: int
-    size: str
+    size: ProductSize
     total_price: float
     created_at: datetime
     status: OrderStatus
