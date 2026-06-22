@@ -14,6 +14,7 @@ class OrderCreate(BaseModel):
     address: str
     product_id: int
     quantity: int
+    size: str
     note: Optional[str]=None
     
 
@@ -31,6 +32,7 @@ class OrderResponse(BaseModel):
     address: str
     product_id: int
     quantity: int
+    size: str
     total_price: float
     created_at: datetime
     status: OrderStatus

@@ -21,6 +21,7 @@ class Order(SQLModel, table=True):
     address: Optional[str]= Field(default=None)
     product_id:int
     quantity: int
+    size: str
     total_price:float
     status: OrderStatus= Field(default=OrderStatus.pending)
     note: Optional[str]= Field(default=None)

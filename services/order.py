@@ -8,6 +8,7 @@ from models.product import Product
 def creat_order(order: OrderCreate, session: Session):
     product= session.exec(select(Product).where(Product.id==order.product_id)).first()
     if not product:
+        
         raise HTTPException(status_code=404,detail="Product not found")
     
     if order.quantity >= product.quantity:
@@ -18,6 +19,7 @@ def creat_order(order: OrderCreate, session: Session):
         total= product.price * order.quantity
     else:
         total= (product.price * order.quantity) + 50
+        
         
     product.quantity -= order.quantity
     
@@ -31,6 +33,7 @@ def creat_order(order: OrderCreate, session: Session):
         address=order.address,
         product_id=order.product_id,
         quantity=order.quantity,
+        size=order.size,
         note=order.note,
         total_price=total
         )
